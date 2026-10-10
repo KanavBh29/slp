@@ -117,7 +117,19 @@ function toggleMic() {
       const best = chooseAlternative(alts);
       handle(best.transcript, { kind: 'voice', confidence: best.confidence, alternatives: alts });
     },
-    onError: (msg) => addMessage('bot', esc(msg), 'HyperBot · system'),
+    onError: (msg, code) => {
+      if (code === 'network' && WhisperEngine.supported()) {
+        // Brave, Opera, Vivaldi and some networks block the browser's cloud
+        // speech service. Switch to Whisper, which runs on the device.
+        els.engine.value = 'whisper';
+        saveSettings();
+        addMessage('bot', 'Your browser’s built-in speech service isn’t reachable. This is common in Brave, Opera and Vivaldi, or on networks that block Google. ' +
+          'I’ve switched to <b>Whisper</b>, which runs on your device. Tap the mic, speak, then tap it again to stop. ' +
+          'The first time, it downloads a ~40 MB model.', 'HyperBot · system');
+        return;
+      }
+      addMessage('bot', esc(msg), 'HyperBot · system');
+    },
     onEnd: () => {
       els.mic.classList.remove('listening');
       els.interim.hidden = true;
@@ -130,7 +142,7 @@ function toggleMic() {
 
 async function init() {
   if (settings.engine) els.engine.value = settings.engine;
-  else if (!WebSpeechEngine.supported()) els.engine.value = 'whisper';
+  else if (!WebSpeechEngine.supported() || navigator.brave) els.engine.value = 'whisper';
   if (settings.lang) els.lang.value = settings.lang;
   if (settings.tts === false) els.tts.checked = false;
   if (settings.debug === false) els.debug.checked = false;
