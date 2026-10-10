@@ -10,7 +10,7 @@ HyperBot is a voice chatbot for supercars and hypercars. You can ask it about a 
 | Deep learning model for intent classification | **Bidirectional LSTM** with pre-trained **GloVe** word embeddings, trained in TensorFlow/Keras on 26 intents (796 utterance templates). Inference runs in the browser in pure JavaScript. |
 | Display recognised speech and response | Every turn shows the transcript (with ASR confidence), the answer, the predicted intent with its confidence, and the detected entities. A side panel shows the full NLP pipeline. |
 | Deployed online | Static site on GitHub Pages, deployed by `.github/workflows/deploy.yml` after the tests pass. |
-| Report | [`REPORT.md`](REPORT.md) covers the dataset, architecture, methodology and results. |
+| Report | [`report/HyperBot_Project_Report.pdf`](report/HyperBot_Project_Report.pdf) (14-page PDF) and [`REPORT.md`](REPORT.md) cover the dataset, architecture, methodology and results. |
 
 ## How it works
 
