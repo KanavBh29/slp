@@ -1,0 +1,9 @@
+{
+  "name": "hyperbot-voice-chatbot",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "python3 tests/gen_tokenize_cases.py && node tests/parity.test.mjs && node tests/conversation.test.mjs",
+    "serve": "python3 -m http.server 8000 --directory web"
+  }
+}

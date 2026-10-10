@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HyperBot · Voice Supercar Chatbot</title>
+  <meta name="description" content="Voice-enabled chatbot for supercar and hypercar specs, prices and where to buy. Speech recognition + BiLSTM deep learning intent classifier.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏎️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">🏎️</span>
+      <div>
+        <h1>HyperBot</h1>
+        <p>Voice-enabled supercar &amp; hypercar assistant</p>
+      </div>
+    </div>
+    <div class="status" id="status"><span class="dot"></span><span id="status-text">Loading model…</span></div>
+  </header>
+
+  <main class="layout">
+    <section class="chat" aria-label="Chat">
+      <div class="messages" id="messages" aria-live="polite"></div>
+
+      <div class="suggestions" id="suggestions">
+        <button>Tell me about the Bugatti Tourbillon</button>
+        <button>How fast is the Koenigsegg Jesko?</button>
+        <button>Price of the Ferrari F80</button>
+        <button>Where can I buy a McLaren 750S?</button>
+        <button>Compare the Rimac Nevera and the Chiron</button>
+        <button>What can I buy with $400k?</button>
+        <button>Most powerful hypercar</button>
+        <button>Show me electric hypercars</button>
+      </div>
+
+      <div class="interim" id="interim" hidden></div>
+
+      <form class="composer" id="composer" autocomplete="off">
+        <button type="button" class="mic" id="mic" aria-label="Start voice input" disabled>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 1 0-6 0v6a3 3 0 0 0 3 3Zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-2.08A7 7 0 0 0 19 12h-2Z"/></svg>
+          <span class="ring"></span>
+        </button>
+        <input id="text" type="text" placeholder="Speak or type a question…" aria-label="Message" disabled>
+        <button type="submit" class="send" id="send" disabled>Send</button>
+      </form>
+      <p class="hint" id="hint">🎙️ Tap the mic, ask your question, and HyperBot will answer (and speak) back.</p>
+    </section>
+
+    <aside class="panel">
+      <details class="card" open>
+        <summary>⚙️ Settings</summary>
+        <label>Speech recognition engine
+          <select id="engine">
+            <option value="webspeech">Web Speech API (Chrome / Edge / Safari)</option>
+            <option value="whisper">Whisper-tiny in your browser (any browser, ~40 MB download)</option>
+          </select>
+        </label>
+        <label>Accent / language
+          <select id="lang">
+            <option value="en-US">English (US)</option>
+            <option value="en-GB">English (UK)</option>
+            <option value="en-IN">English (India)</option>
+            <option value="en-AU">English (Australia)</option>
+          </select>
+        </label>
+        <label class="row"><input type="checkbox" id="tts" checked> Speak the answers aloud</label>
+        <label class="row"><input type="checkbox" id="debug" checked> Show model analysis under answers</label>
+      </details>
+
+      <details class="card" open>
+        <summary>🧠 NLP pipeline (last message)</summary>
+        <ol class="pipeline" id="pipeline">
+          <li><b>Speech → text</b><span id="p-asr">waiting for input…</span></li>
+          <li><b>Entity masking</b><span id="p-ent">–</span></li>
+          <li><b>BiLSTM tokens</b><span id="p-tok">–</span></li>
+          <li><b>Intent probabilities</b><div id="p-probs" class="probs">–</div></li>
+          <li><b>Response</b><span id="p-resp">–</span></li>
+        </ol>
+      </details>
+
+      <details class="card">
+        <summary>ℹ️ About this project</summary>
+        <p>Speech is transcribed by the browser's speech recogniser (or an in-browser Whisper model). The text is normalised, car/brand/number entities are masked, and a <b>Bidirectional LSTM</b> with GloVe embeddings, trained in TensorFlow/Keras, classifies it into one of 26 intents. The answer is built from a curated database of <span id="n-cars">35</span> supercars &amp; hypercars.</p>
+        <p>All inference runs locally in your browser. Prices are approximate.</p>
+        <p><a href="https://github.com/KanavBh29/slp" target="_blank" rel="noopener">Source code &amp; report ↗</a></p>
+      </details>
+    </aside>
+  </main>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

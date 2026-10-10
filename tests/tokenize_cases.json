@@ -1,0 +1,117 @@
+[
+ {
+  "text": "What's the top speed of the xcar?",
+  "tokens": [
+   "whats",
+   "the",
+   "top",
+   "speed",
+   "of",
+   "the",
+   "xcar"
+  ]
+ },
+ {
+  "text": "0-100 in 2.5s for $2.5 million",
+  "tokens": [
+   "xnum",
+   "xnum",
+   "in",
+   "xnum",
+   "for",
+   "xnum"
+  ]
+ },
+ {
+  "text": "is it a V8 or V12",
+  "tokens": [
+   "is",
+   "it",
+   "a",
+   "v8",
+   "or",
+   "v12"
+  ]
+ },
+ {
+  "text": "I have 300k dollars",
+  "tokens": [
+   "i",
+   "have",
+   "xnum",
+   "dollars"
+  ]
+ },
+ {
+  "text": "Under $1,500,000 please!",
+  "tokens": [
+   "under",
+   "xnum",
+   "xnum",
+   "xnum",
+   "please"
+  ]
+ },
+ {
+  "text": "compare xcar & xcar",
+  "tokens": [
+   "compare",
+   "xcar",
+   "and",
+   "xcar"
+  ]
+ },
+ {
+  "text": "t.50 price",
+  "tokens": [
+   "t",
+   "xnum",
+   "price"
+  ]
+ },
+ {
+  "text": "how much... is it",
+  "tokens": [
+   "how",
+   "much",
+   "is",
+   "it"
+  ]
+ },
+ {
+  "text": "Hello, bot.",
+  "tokens": [
+   "hello",
+   "bot"
+  ]
+ },
+ {
+  "text": "xbrand's cars",
+  "tokens": [
+   "xbrands",
+   "cars"
+  ]
+ },
+ {
+  "text": "reach 60 mph",
+  "tokens": [
+   "reach",
+   "xnum",
+   "mph"
+  ]
+ },
+ {
+  "text": "budget: 3 crore",
+  "tokens": [
+   "budget",
+   "xnum"
+  ]
+ },
+ {
+  "text": "what's   up",
+  "tokens": [
+   "whats",
+   "up"
+  ]
+ }
+]
