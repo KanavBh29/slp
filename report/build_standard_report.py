@@ -23,11 +23,9 @@ LIVE = "https://kanavbh29.github.io/slp/"
 REPO = "https://github.com/KanavBh29/slp"
 e = html.escape
 
-# Team table (edit roles here if needed).
+# Author (single-member project).
 TEAM = [
-    ("Vidhi", "Speech Recognition &amp; Voice Interface", "23BAI0063"),
-    ("Yash", "Dataset &amp; BiLSTM Intent Model", "23BAI0011"),
-    ("Kanav", "Dialogue System &amp; Deployment", "23BAI0018"),
+    ("Kanav", "Design, Implementation &amp; Deployment", "23BAI0018"),
 ]
 GUIDE = "Prof. Swetha Vasudevan"
 DATE = "11 October 2026"
