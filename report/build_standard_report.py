@@ -28,7 +28,7 @@ TEAM = [
     ("Kanav", "Design, Implementation &amp; Deployment", "23BAI0018"),
 ]
 GUIDE = "Prof. Swetha Vasudevan"
-DATE = "11 October 2026"
+DATE = "10 October 2026"
 
 fm, cv, rs = M["final_model"], M["template_cv"], M["random_split"]
 g, b, s = cv["bilstm_glove"], cv["bow_mlp"], cv["bilstm_scratch"]
