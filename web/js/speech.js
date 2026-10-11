@@ -12,7 +12,7 @@ export class WebSpeechEngine {
 
   constructor() { this.rec = null; }
 
-  /** cb: {onInterim(text), onFinal(alternatives[{transcript, confidence}]), onError(msg), onEnd()} */
+  /** cb: {onInterim(text), onFinal(alternatives[{transcript, confidence}]), onError(msg, code), onEnd()} */
   start(lang, cb) {
     const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
     const rec = new SR();
@@ -38,11 +38,11 @@ export class WebSpeechEngine {
       const msg = {
         'not-allowed': 'Microphone permission was denied. Allow mic access in the address bar and try again.',
         'no-speech': 'I didn’t hear anything. Tap the mic and try again.',
-        'network': 'The speech service could not be reached (network error). Try the Whisper engine in Settings.',
+        'network': 'The browser’s speech service could not be reached (network error).',
         'audio-capture': 'No microphone was found.',
         'aborted': null,
       }[e.error] ?? `Speech recognition error: ${e.error}`;
-      if (msg) cb.onError(msg);
+      if (msg) cb.onError(msg, e.error);
     };
     rec.onend = () => { this.rec = null; cb.onEnd(done); };
     rec.start();
